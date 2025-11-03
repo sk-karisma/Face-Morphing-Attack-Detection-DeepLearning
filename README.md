@@ -18,8 +18,6 @@ Modern Face Recognition (FR) systems are highly advanced, but they remain vulner
 
 A Morphing Attack involves fusing the identity information from two or more people into a single, synthetic image. This "morphed" image is designed to be verifiable for all contributing individuals, posing a major risk to security systems like automated border control, where multiple people could use the same passport.
 
-This project implements and evaluates a **Single-Image Morphing Attack Detection (MAD)** system, which is designed to distinguish these malicious morphed images from legitimate (bona-fide) photos.
-
 ## 2. MADation
 
 While large-scale Foundation Models (FMs) like CLIP have powerful generalization capabilities, their use in highly specific, domain-specific tasks like MAD is not well-explored.
