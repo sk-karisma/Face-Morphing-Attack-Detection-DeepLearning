@@ -8,9 +8,9 @@ This repository is an implementation of the deep learning project "Face Morphing
 
 ## 📖 Table of Contents
 * [1. Introduction: The Problem](#1-introduction-the-problem)
-* [2. Our Solution: MADation](#2-our-solution-madation)
+* [2. Solution: MADation](#2-madation)
 * [3. Methodologies Explored](#3-methodologies-explored)
-* [4. Key Results (Ablation Study)](#4-key-results-ablation-study)
+* [4. Ablation Study](#4-ablation-study)
 
 ## 1. Introduction: The Problem
 
@@ -53,7 +53,7 @@ To prove the effectiveness of MADation, we implemented and compared it against t
     * **Architecture:** The standard, off-the-shelf, frozen CLIP model.
     * **Training:** No training is performed. Classification is done by comparing the image's embedding to the text embeddings of "a face morphing attack" and "a bona-fide presentation".
 
-## 4. Key Results (Ablation Study)
+## 4. Ablation Study
 
 All models were trained on the SMDD dataset and evaluated on the MorDIFF dataset. The results clearly demonstrate the superiority of the MADation framework.
 
