@@ -33,7 +33,7 @@ print("Dependencies imported successfully.")
 # 2. DATA PATH MAPPING AND CSV GENERATION
 # ==============================================================================
 
-# This path must match your attached dataset's folder name.
+# This path is the attached dataset's folder name.
 DATASET_ROOT = "/kaggle/input/amsl-facemorphimagedataset"
 
 # Map folder names to binary labels: 0 for Genuine, 1 for Morph
@@ -171,11 +171,10 @@ class Config:
     scheduler_type: str = 'cosine'
     warmup: bool = True
     num_warmup_epochs: int = 5
-    # --- Added fields for testing ---
     output_path: str = "./results"
     test_data_name: str = "validation_set"
 
-# --- Added Helper Functions for Testing ---
+# --- Helper Functions for Testing ---
 
 def evaluate_mad_performance(scores, labels):
     """Calculates AUC and EER."""
@@ -257,7 +256,6 @@ class TrainerClip:
             self.header.train()
             self.loss_log.reset()
 
-            # FIX: Unpack 3 items from dataset
             for i, (images, target, _) in enumerate(self.dataloader):
                 self.global_step += 1
 
@@ -365,7 +363,6 @@ class TrainerClip:
         raw_test_img_pths = []
 
         with torch.no_grad():
-            # FIX: Loop unpacks 3 items, matching dataset
             for i, (raw, labels, img_paths) in enumerate(self.val_dataloader):
                 if i % 5 == 0:
                     print(f"Testing batch {i}/{len(self.val_dataloader)}")
@@ -379,8 +376,7 @@ class TrainerClip:
                 logits_per_image = (100.0 * image_features @ text_features.T).softmax(
                     dim=-1
                 )
-
-                # Score is probability of "morphing attack" (prompt at index 0)
+              
                 raw_scores = logits_per_image[:, 0]
 
                 raw_test_scores.append(raw_scores.cpu())
@@ -418,9 +414,6 @@ if __name__ == '__main__':
     else:
         config = Config()
 
-        # --- FIX: Create BOTH dataloaders inside __main__ ---
-        # This ensures they use the updated FaceMorphDataset class
-
         # 1. Create Train Dataloader
         CLIP_TRANSFORMS = transforms.Compose([
             transforms.Resize((224, 224)),
@@ -452,7 +445,7 @@ if __name__ == '__main__':
         # --- RUNNING ALL THREE FUNCTIONS SEQUENTIALLY ---
 
         print("\nRUNNING MODE 1: Training LoRA + Header (MAD_training)")
-        trainer.start_training() # This calls the original MAD_training
+        trainer.start_training()
 
         print("\nRUNNING MODE 2: Training Header Only (MAD_training_header_only)")
         # Re-initialize model and header to reset weights before next training
