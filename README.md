@@ -4,7 +4,7 @@
 
 This repository is an implementation of the deep learning project "Face Morphing Attack Detection," based on the paper *MADation: Face Morphing Attack Detection with Foundation Models*.
 
-[![Paper](https://img.shields.io/badge/arXiv-2501.03800-b31b1b.svg)](https://arxiv.org/abs/2501.03800v3)
+[![Paper](https://img.shields.io/badge/arXiv-2501.03800-b31b1b.svg)](https://arxiv.org/pdf/2501.03800v3)
 
 ## 📖 Table of Contents
 * [1. Introduction: The Problem](#1-introduction-the-problem)
@@ -20,11 +20,11 @@ A Morphing Attack involves fusing the identity information from two or more peop
 
 This project implements and evaluates a **Single-Image Morphing Attack Detection (MAD)** system, which is designed to distinguish these malicious morphed images from legitimate (bona-fide) photos.
 
-## 2. Our Solution: MADation
+## 2. MADation
 
 While large-scale Foundation Models (FMs) like CLIP have powerful generalization capabilities, their use in highly specific, domain-specific tasks like MAD is not well-explored.
 
-Our proposed solution, **MADation**, is a framework that efficiently adapts a pre-trained FM (CLIP) for the MAD task.
+**MADation**, is a framework that efficiently adapts a pre-trained FM (CLIP) for the MAD task.
 
 Instead of retraining the entire, massive model (which is computationally expensive and requires huge datasets), MADation uses **Low-Rank Adaptation (LoRA)**.
 
@@ -37,7 +37,7 @@ Instead of retraining the entire, massive model (which is computationally expens
 
 To prove the effectiveness of MADation, we implemented and compared it against three key baselines.
 
-1.  **`MADation` (Proposed Method):**
+1.  **`MADation`:**
     * **Architecture:** Pre-trained CLIP (ViT) model + LoRA adapters.
     * **Training:** LoRA layers and a final classification layer are trained simultaneously.
 
